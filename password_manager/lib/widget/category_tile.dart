@@ -30,13 +30,12 @@ class CategoryTile extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: Theme.of(context).textTheme.headline6.copyWith(
-                      color: selected ? Colors.white : Colors.black,
-                    ),
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    .copyWith(color: selected ? Colors.white : Colors.black),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               selected ? icon : secondaryIcon
             ],
           ),
