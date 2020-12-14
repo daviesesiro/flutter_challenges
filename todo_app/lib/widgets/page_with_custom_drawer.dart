@@ -18,7 +18,7 @@ class PageWithCustomDrawer extends StatelessWidget {
     @required this.showDrawer,
     @required this.customDrawer,
     @required this.page,
-    this.duration = const Duration(milliseconds: 400),
+    this.duration = const Duration(milliseconds: 100),
     this.scaleDown = 0.85,
     this.translateX = 300.0,
     this.curve = Curves.fastOutSlowIn,

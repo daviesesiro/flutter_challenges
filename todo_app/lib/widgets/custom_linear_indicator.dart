@@ -15,6 +15,7 @@ class _CustomProgressIndicatorState extends State<CustomProgressIndicator>
     with AfterLayoutMixin<CustomProgressIndicator> {
   final GlobalKey _keyProgressIndicator = GlobalKey();
   Size sizeOfProgressIndicator;
+  final double widthOfPointer = 4;
 
   _getProgressIndcatorSize() {
     setState(() {
@@ -22,7 +23,6 @@ class _CustomProgressIndicatorState extends State<CustomProgressIndicator>
           (_keyProgressIndicator.currentContext.findRenderObject() as RenderBox)
               .size;
     });
-    print(sizeOfProgressIndicator);
   }
 
   @override
@@ -45,13 +45,11 @@ class _CustomProgressIndicatorState extends State<CustomProgressIndicator>
           Positioned(
             left: sizeOfProgressIndicator == null
                 ? 200 * widget.value
-                : sizeOfProgressIndicator.width * widget.value - 5,
+                : sizeOfProgressIndicator.width * widget.value - widthOfPointer,
             bottom: 1,
-            width: 5,
-            height: 10,
             child: Container(
-              height: 10,
-              width: 5,
+              height: 8,
+              width: widthOfPointer,
               color: widget.color,
             ),
           ),

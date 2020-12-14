@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/dummydata/category_dummy_data.dart';
 import 'package:todo_app/widgets/category_list.dart';
+import 'package:todo_app/widgets/todo_tile.dart';
 import 'package:todo_app/widgets/cutom_drawer.dart';
 import 'package:todo_app/widgets/page_with_custom_drawer.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -15,7 +17,7 @@ class HomePage extends HookWidget {
     }
 
     return PageWithCustomDrawer(
-      duration: Duration(milliseconds: 500),
+      duration: Duration(milliseconds: 800),
       showDrawer: showDrawer.value,
       customDrawer: CustomDrawer(
         toggle: toggleDrawer,
@@ -34,28 +36,35 @@ class HomePage extends HookWidget {
             ),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.plus_one),
+        floatingActionButton: Transform(
+          transform: Matrix4.identity()..translate(-20.0, -40.0),
+          child: FloatingActionButton(
+            onPressed: () {},
+            child: Icon(Icons.add, size: 30),
+          ),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 10),
-              Text("What's up, User!",
+              SizedBox(height: 5),
+              Text("What's up, Joy!",
                   style: Theme.of(context).textTheme.headline4),
-              SizedBox(height: 40),
+              SizedBox(height: 20),
               buildSection(context, 'categories'),
-              SizedBox(height: 10),
               CategoryList(),
-              SizedBox(height: 30),
+              SizedBox(height: 20),
               buildSection(context, 'Today\'s todo'),
-              ListView.builder(
-                itemCount: 3,
-                itemBuilder: (_, __) => Container(),
-              )
+              SizedBox(height: 20),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: DUMMY_TODOS.length,
+                  itemBuilder: (_, idx) => TodoTile(
+                    todo: DUMMY_TODOS[idx],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

@@ -8,11 +8,10 @@ class Category {
   final Color color;
   final double value;
 
-  Category(
-      {@required this.id,
-      @required this.name,
-      @required this.color,
-      @required this.value}) {
-    print(value);
-  }
+  Category({
+    @required this.id,
+    @required this.name,
+    @required this.color,
+    @required this.value,
+  });
 }
